@@ -1,5 +1,5 @@
 # Create your Phrase class logic here.
-class Phrase(self):
+class Phrase:
     def __init__(self, phrase):
         phrase = self.phrase
         
