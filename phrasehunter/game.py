@@ -10,3 +10,13 @@ class Game():
 
     def get_random_phrase(self):
         return random.choice(self.phrases)
+    
+    def welcome(self):
+        print("===========================\n"
+              "  Welcome to Phrase Hunter\n"
+              "===========================\n")
+        
+    def start(self):
+        self.welcome()
+        print("Number missed: {}".format(self.missed))
+        Phrase.display(self.active_phrase)

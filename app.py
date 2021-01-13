@@ -1,9 +1,8 @@
 from phrasehunter.game import Game
-
-import random
+from phrasehunter.phrase import Phrase
 
 if __name__ == "__main__":
     game = Game()
     
-    print(game.active_phrase)
-
+    
+    game.start()
