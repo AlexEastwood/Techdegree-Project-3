@@ -4,7 +4,11 @@ import random
 class Game():
     def __init__(self):
         self.missed = 0
-        self.phrases = ["Hello World", "The Cat in the Hat", "Now dig on this", "Watch the hands", "This is your stage"]
+        self.phrases = [Phrase("Hello World"), 
+                        Phrase("The Cat in the Hat"), 
+                        Phrase("Now dig on this"), 
+                        Phrase("Watch the hands"), 
+                        Phrase("This is your stage")]
         self.active_phrase = self.get_random_phrase()
         self.guesses = [" "]
 
@@ -18,5 +22,21 @@ class Game():
         
     def start(self):
         self.welcome()
-        print("Number missed: {}".format(self.missed))
-        Phrase.display(self.active_phrase)
+        while self.active_phrase.check_complete(self.guesses) == False and self.missed < 5:
+            print(f"Number missed: {self.missed}")
+            self.active_phrase.display(self.guesses)
+            self.user_guess = self.get_guess()
+            self.guesses.append(self.user_guess)
+            if not self.active_phrase.check_guess(self.user_guess):
+                self.missed += 1
+        
+        self.game_over()
+        
+    def get_guess(self):
+        return input("\nPlease guess a letter\n")
+        
+    def game_over(self):
+        if self.missed >= 5:
+            print("You lose!")
+        else:
+            print("You win!")
