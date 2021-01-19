@@ -33,7 +33,12 @@ class Game():
         self.game_over()
         
     def get_guess(self):
-        return input("\nPlease guess a letter\n")
+        while True:
+            guess = input("\nPlease guess a letter\n")
+            if guess.isalpha() and len(guess) == 1:
+                return guess
+            else:
+                continue
         
     def game_over(self):
         if self.missed >= 5:
