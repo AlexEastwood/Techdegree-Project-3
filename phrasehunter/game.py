@@ -5,10 +5,10 @@ class Game():
     def __init__(self):
         self.missed = 0
         self.phrases = [Phrase("Hello World"), 
-                        Phrase("The Cat in the Hat"), 
-                        Phrase("Now dig on this"), 
-                        Phrase("Watch the hands"), 
-                        Phrase("This is your stage")]
+                        Phrase("Hello world again"), 
+                        Phrase("Goodbye world"), 
+                        Phrase("The answer to the game"), 
+                        Phrase("The hardest word to guess is jazz")]
         self.active_phrase = self.get_random_phrase()
         self.guesses = [" "]
 
