@@ -22,15 +22,26 @@ class Game():
         
     def start(self):
         self.welcome()
-        while self.active_phrase.check_complete(self.guesses) == False and self.missed < 5:
-            print(f"Number missed: {self.missed}")
-            self.active_phrase.display(self.guesses)
-            self.user_guess = self.get_guess()
-            self.guesses.append(self.user_guess)
-            if not self.active_phrase.check_guess(self.user_guess):
-                self.missed += 1
-        
-        self.game_over()
+        while True:
+            while self.active_phrase.check_complete(self.guesses) == False and self.missed < 5:
+                print(f"Number missed: {self.missed}")
+                self.active_phrase.display(self.guesses)
+                self.user_guess = self.get_guess()
+                self.guesses.append(self.user_guess)
+                if not self.active_phrase.check_guess(self.user_guess):
+                    self.missed += 1
+            
+            self.game_over()
+            
+            while True:
+                yes_no = input("Would you like to play again? Y/N\n")
+                if yes_no.upper() == "Y":
+                    return
+                elif yes_no.upper() == "N":
+                    print("Goodbye")
+                    exit()
+                else:
+                    continue
         
     def get_guess(self):
         while True:
