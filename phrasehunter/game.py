@@ -36,7 +36,10 @@ class Game():
             while True:
                 yes_no = input("Would you like to play again? Y/N\n")
                 if yes_no.upper() == "Y":
-                    return
+                    self.active_phrase = self.get_random_phrase()
+                    self.guesses = [" "]
+                    self.missed = 0
+                    break
                 elif yes_no.upper() == "N":
                     print("Goodbye")
                     exit()
@@ -47,7 +50,7 @@ class Game():
         while True:
             guess = input("\nPlease guess a letter\n")
             if guess.isalpha() and len(guess) == 1:
-                return guess
+                return guess.lower()
             else:
                 continue
         
